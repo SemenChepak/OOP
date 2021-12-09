@@ -11,7 +11,8 @@ class MYSQLConnector:
         self.info = Cred('mysql')
         self._logger = DataLogger(self)
 
-    def __connect__(self):
+    def __connect(self):
+
         self._logger.info('Opening the Connection')
 
 
