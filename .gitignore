@@ -4,3 +4,6 @@ venv/
 *.json
 *.csv
 .idea/
+*.log
+__pycache__/
+*.pyc

@@ -19,7 +19,7 @@ class DataWriter:
 
         self._logger.info(f'Headers {keys}')
 
-        with open(f'{PATH_OUTPUT}\\csv\\cr_{date}', 'w') as f:
+        with open(f'{PATH_OUTPUT}\\csv\\cr_{date}', 'w', newline='') as f:
             dict_writer = csv.DictWriter(f, keys)
             dict_writer.writeheader()
             dict_writer.writerows(data_frame)

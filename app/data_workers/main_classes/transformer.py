@@ -4,18 +4,13 @@ from abc import ABC, abstractmethod
 class DataTransformer(ABC):
 
     @abstractmethod
-    def delete_duplicate(self):
+    def delete(self, *args, **kwargs):
         raise NotImplementedError
 
     @abstractmethod
-    def add_column(self):
+    def add(self, *args, **kwargs):
         raise NotImplementedError
 
     @abstractmethod
-    def filter_by(self):
+    def filter(self, *args, **kwargs):
         raise NotImplementedError
-
-    @abstractmethod
-    def show(self):
-        raise NotImplementedError
-
