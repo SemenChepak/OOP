@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class DataTransformer(ABC):
+class Transformer(ABC):
 
     @abstractmethod
     def delete(self, *args, **kwargs):

@@ -1,26 +1,20 @@
-from DB_Connectors.MYSQL import MYSQLConnector
-from SQL_Query.Queryes import Query
-from logs.Logger.Loger import DataLogger
+from database_connectors.mysql import Mconnector
+from SQL_Query.queries import QUERIES
+from logs.logger.logger import Logger
 
 
-class DataExtractor:
+class Extractor:
     def __init__(self):
-        self._db_worker = MYSQLConnector()
-        self._logger = DataLogger(self)
+        self._db_worker = Mconnector()
+        self._logger = Logger(self)
 
-    def get_data(self, key: str, limit):
-        if limit:
+    def get_data_msq(self, key: str, limit):
 
-            self._logger.info(f'start extracting data key: {Query[key]} limit {limit}')
+        self._logger.info(f'start extracting data key: {QUERIES[key]} limit {limit}')
 
-            return self._db_worker.fetch(f"{Query[key]} limit {limit}")
-        else:
-
-            self._logger.info(f'start extracting data key: {Query[key]}')
-
-            return self._db_worker.fetch(Query[key])
+        return self._db_worker.fetch(f"{QUERIES[key]} limit {limit}")
 
 
 if __name__ == '__main__':
-    a = DataExtractor()
-    print(a.get_data(key='cards', limit=150))
+    a = Extractor()
+    print(a.get_data_msq(key='cards', limit=150))

@@ -1,4 +1,4 @@
-Query = {'all': f"SELECT * from people" \
+QUERIES = {'all': f"SELECT * from people" \
                 f" left join cards on people.customer_id = cards.holder_id " \
                 f"left join transactions on cards.card_no = transactions.card_number",
 

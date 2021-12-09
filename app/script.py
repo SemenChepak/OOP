@@ -1,11 +1,11 @@
 import time
 
-from data_workers.main_classes.extractor import DataExtractor
-from data_workers.main_classes.transformer import DataTransformer
-from data_workers.main_classes.writer import DataWriter
+from data_workers.main_classes.extractor import Extractor
+from data_workers.main_classes.transformer import Transformer
+from data_workers.main_classes.writer import Writer
 
 
-class DataTrans(DataTransformer):
+class Trans(Transformer):
     def __init__(self):
         pass
 
@@ -29,23 +29,22 @@ class DataTrans(DataTransformer):
         return data_frame
 
 
-class BatiaOfData(DataWriter, DataExtractor, DataTrans):
+class Batia:
     def __init__(self):
-        super(DataWriter, self).__init__()
-        super(DataExtractor, self).__init__()
-        super(DataTrans, self).__init__()
-
+        self.writer = Writer()
+        self.extractor = Extractor()
+        self.trans = Trans()
 
 if __name__ == '__main__':
-    batia = BatiaOfData()
+    batia = Batia()
     # executor
-    df = batia.get_data('cards', 10)
+    df = batia.extractor.get_data_msq('cards', 10)
     # writer
-    batia.create_json(df)
-    batia.create_csv(df)
+    batia.writer.create_json(df)
+    batia.writer.create_csv(df)
     # worker
-    a = batia.filter(data_frame=df, key='card_no', value='1406169918986365')
-    b = batia.delete(data_frame=df, key='card_no', value='1406169918986365')
-    df = batia.add(df, 'created_at', time.time())
-    batia.create_json(df)
-    batia.create_csv(df)
+    a = batia.trans.filter(data_frame=df, key='card_no', value='1406169918986365')
+    b = batia.trans.delete(data_frame=df, key='card_no', value='1406169918986365')
+    df = batia.trans.add(df, 'created_at', time.time())
+    batia.writer.create_json(df)
+    batia.writer.create_csv(df)

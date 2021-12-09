@@ -1,6 +1,6 @@
 import configparser
 
-from creds.PATH_holder.path_holder import PATH
+from creds.path_holder.path_holder import PATH
 
 
 class Cred:

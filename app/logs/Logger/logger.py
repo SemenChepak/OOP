@@ -1,6 +1,6 @@
 import logging
 import getpass
-from creds.PATH_holder.path_holder import PATH_LOGS
+from creds.path_holder.path_holder import PATH_LOGS
 
 logging.basicConfig(filename=f"{PATH_LOGS}\\logs",
                     filemode='a',
@@ -8,7 +8,7 @@ logging.basicConfig(filename=f"{PATH_LOGS}\\logs",
                     datefmt='%H:%M:%S', )
 
 
-class DataLogger(object):
+class Logger(object):
     def __init__(self, name):
         self.filename = f"{PATH_LOGS}\\logs",
         self.filemode = 'a'
