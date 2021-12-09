@@ -5,7 +5,7 @@ from creds.cred_holder import Cred
 from logs.logger.logger import Logger
 
 
-class Pconnector:
+class POSTGRESConnection:
 
     def __init__(self):
         self.info = Cred('postgres')

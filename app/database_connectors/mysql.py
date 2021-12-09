@@ -5,7 +5,7 @@ from creds.cred_holder import Cred
 from logs.logger.logger import Logger
 
 
-class Mconnector:
+class MSQLConnector:
 
     def __init__(self):
         self.info = Cred('mysql')
@@ -66,6 +66,3 @@ class Mconnector:
                f'{self.info._password}@' \
                f'{self.info._host}/' \
                f'{self.info._database}'
-
-a = Mconnector()
-print(a.fetch('show tables'))

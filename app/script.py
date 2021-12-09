@@ -35,16 +35,19 @@ class Batia:
         self.extractor = Extractor()
         self.trans = Trans()
 
+    def test(self):
+        # executor
+        df = self.extractor.get_data_msq('cards', 10)
+        # writer
+        self.writer.create_json(df)
+        self.writer.create_csv(df)
+        # worker
+        a = self.trans.filter(data_frame=df, key='card_no', value='1406169918986365')
+        b = self.trans.delete(data_frame=df, key='card_no', value='1406169918986365')
+        df = self.trans.add(df, 'created_at', time.time())
+        self.writer.create_json(df)
+        self.writer.create_csv(df)
+
+
 if __name__ == '__main__':
-    batia = Batia()
-    # executor
-    df = batia.extractor.get_data_msq('cards', 10)
-    # writer
-    batia.writer.create_json(df)
-    batia.writer.create_csv(df)
-    # worker
-    a = batia.trans.filter(data_frame=df, key='card_no', value='1406169918986365')
-    b = batia.trans.delete(data_frame=df, key='card_no', value='1406169918986365')
-    df = batia.trans.add(df, 'created_at', time.time())
-    batia.writer.create_json(df)
-    batia.writer.create_csv(df)
+    Batia().test()
