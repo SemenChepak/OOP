@@ -12,7 +12,8 @@ class MYSQLConnector:
         self._logger = DataLogger(self)
 
     def __connect__(self):
-        self._logger.warn('Opening the Connection')
+        self._logger.info('Opening the Connection')
+
 
         self._con = pymysql.connect(
             host=self.info._host,
