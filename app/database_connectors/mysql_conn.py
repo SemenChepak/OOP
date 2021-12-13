@@ -27,7 +27,8 @@ class MSQLConnector:
                 People.city,
                 People.birth_date
             ).all()
-            return res
+
+            return self.change_type(res)
 
     def select_cards(self):
         with self.Session() as sess:
@@ -67,5 +68,14 @@ class MSQLConnector:
     def __engine(self):
         return self.info._uri
 
+    @staticmethod
+    def change_type(df):
+        ex = []
+        for row in df:
+            ex.append(dict(row))
+        return ex
 
 
+a = MSQLConnector()
+res = a.select_people()
+print(a.change_type(res))

@@ -19,7 +19,7 @@ class Writer:
 
         self._logger.info(f'Headers {keys}')
 
-        with open(f'{PATH_OUTPUT_CSV}cr_{date}', 'w', newline='') as f:
+        with open(f'{PATH_OUTPUT_CSV}cr_{date}', 'w', newline='', encoding="utf-8") as f:
             dict_writer = csv.DictWriter(f, keys)
             dict_writer.writeheader()
             dict_writer.writerows(data_frame)
@@ -32,6 +32,6 @@ class Writer:
         self._logger.info(f'Starting creating csv name:<<{date}>>')
 
         with open(f'{PATH_OUTPUT_JSON}cr_{date}', 'w') as f:
-            json.dump(data_frame, f)
+            json.dump(data_frame, f,indent=4, sort_keys=True, default=str)
 
         self._logger.info(f'file created')
