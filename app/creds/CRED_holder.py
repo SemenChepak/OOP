@@ -12,3 +12,4 @@ class Cred:
         self._database = CRED.get(param, 'database')
         self._user = CRED.get(param, 'user')
         self._password = CRED.get(param, 'password')
+        self._uri = CRED.get(param, 'URI')

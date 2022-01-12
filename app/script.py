@@ -37,13 +37,14 @@ class Batia:
 
     def test(self):
         # executor
-        df = self.extractor.get_data_msq('cards', 10)
+        df = self.extractor.get_data_msq()
         # writer
+        print(df)
         self.writer.create_json(df)
         self.writer.create_csv(df)
         # worker
-        a = self.trans.filter(data_frame=df, key='card_no', value='1406169918986365')
-        b = self.trans.delete(data_frame=df, key='card_no', value='1406169918986365')
+        a = self.trans.filter(data_frame=df, key='id_code', value='41261')
+        b = self.trans.delete(data_frame=df, key='id_code', value='41261')
         df = self.trans.add(df, 'created_at', time.time())
         self.writer.create_json(df)
         self.writer.create_csv(df)

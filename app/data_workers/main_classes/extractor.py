@@ -1,4 +1,4 @@
-from database_connectors.mysql import MSQLConnector
+from database_connectors.mysql_conn import MSQLConnector
 from SQL_Query.queries import QUERIES
 from logs.logger.logger import Logger
 
@@ -8,11 +8,11 @@ class Extractor:
         self._db_worker = MSQLConnector()
         self._logger = Logger(self)
 
-    def get_data_msq(self, key: str, limit):
+    def get_data_msq(self):
 
-        self._logger.info(f'start extracting data key: {QUERIES[key]} limit {limit}')
+        self._logger.info(f'start extracting data key: ')
 
-        return self._db_worker.fetch(f"{QUERIES[key]} limit {limit}")
+        return self._db_worker.select_people()
 
 
 if __name__ == '__main__':
